@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container-au {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+}
+
+.content-game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #c5691e;
+    width: 60%;
+    height: 70%;
+}
+
+.content-options {
+    background-color: #e915c6;
+    width: 60%;
+    height: 10%;
+}
+
+
+.bar-arrows {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: auto;
+    height: 70px;
+    padding: 0 90px 0;
+    border: 4px solid #c5c5c5;
+    border-radius: 37px;
+}
+
+.arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 2px 0;
+    animation: beat 1s infinite;
+}
+
+.arrow-blue {
+    background: #121FCF;
+    background: radial-gradient(circle farthest-side at top center, #121FCF 55%, #1383c4 70%, #3decff 100%);
+}
+
+.arrow-red {
+    background: #e60e18;
+    background: radial-gradient(circle farthest-side at top center, #e60e18 55%, #ee3b44 70%, #f3686f 100%);
+}
+
+
+.arrow-green {
+    background: #31aa12;
+    background: radial-gradient(circle farthest-side at top center, #5eaa06 55%, #1f7909 70%, #12b920 100%);
+}
+
+
+.arrow-icon {
+    color: #ffffff !important;
+    font-size: 55px !important;
+    font-weight: 700 !important;
+}
+
+.bar-hit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: auto;
+    height: 25px;
+    padding: 0 90px 0;
+    margin: 0 0 10px;
+    border: 4px solid #c5c5c5;
+    border-radius: 37px;
+}
+
+.ball-hit {
+    background-color: #e90b3b;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    animation: beat 0.5s infinite;
+}
+
+
+
+@keyframes beat {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
