@@ -1,3 +1,34 @@
+function choiceReversePercent() {
+    return Math.random() < 0.8 ? 'i' : 'n';
+}
+
+function generateGroupArrows(mode, type_game) {
+    const validArrows = {
+        '4k': ['4', '8', '6', '2'],
+        '8k': ['4', '8', '6', '2', '1', '3', '7', '9', '5'],
+    };
+
+    const arrrows_valids = validArrows[type_game] || [];
+    
+    const arrows_lenght = Math.floor(Math.random() * 8) + 6;
+    const new_arrows = [];
+
+    for (let i = 0; i < arrows_lenght; i++) {
+        const random_index = Math.floor(Math.random() * arrrows_valids.length);
+        const random_number = arrrows_valids[random_index];
+        const modeMap = {
+            'n': 'n',
+            'i': choiceReversePercent()
+        };
+        const modeValue = modeMap[mode] || 'n';
+        new_arrows.push({ 'arrow': random_number, 'mode': modeValue });
+    }
+
+    return new_arrows;
+}
+
+
+
 function generateArray() {
     const arrrows_valids = ['4', '8', '6', '2'];
     const arrows_lenght = Math.floor(Math.random() * 8) + 6;
@@ -39,7 +70,15 @@ function numberToIcons(number) {
         "4": "arrow_back",
         "8": "arrow_upward",
         "6": "arrow_forward",
-        "2": "arrow_downward"
+        "2": "arrow_downward",
+
+        // 8k
+        "1": "arrow_outward",
+        "3": "arrow_outward",
+        "7": "arrow_outward",
+        "9": "arrow_outward",
+        "5": "hive"
+
     };
 
     return iconMap[number] || number;
@@ -47,16 +86,16 @@ function numberToIcons(number) {
 
 
 function generateArrows(array_arrows, bar_arrows, type_mode) {
+    const classMap = {
+        'n': 'arrow arrow-blue',
+        'i': 'arrow arrow-red',
+    };
     array_arrows.forEach(arrow_one => {
         let new_icon = document.createElement("i");
         new_icon.className = "material-icons arrow-icon";
         new_icon.textContent = numberToIcons(arrow_one);
         let new_arrow = document.createElement("div");
-        if (type_mode === "n") {
-            new_arrow.className = "arrow arrow-blue";
-        } else if (type_mode === "i") {
-            new_arrow.className = "arrow arrow-red";
-        }
+        new_arrow.className = classMap[type_mode] || "arrow";
         new_arrow.setAttribute("data-arrow", arrow_one);
         new_arrow.appendChild(new_icon);
         bar_arrows.appendChild(new_arrow);
@@ -112,6 +151,12 @@ function reverseNotes(list_notes) {
         "6": "4",
         "8": "2",
         "2": "8",
+
+        // 8k
+        "7": "3",
+        "3": "7",
+        "9": "1",
+        "1": "9",
     };
     const list_reverse = list_notes.map((element) => reverse_arrow[element] || element);
     return list_reverse;
